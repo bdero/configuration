@@ -89,10 +89,7 @@
 
 # Ruby plays that need to be run after platform updates.
 - name: gem install bundler
-  shell: >
-    gem install bundle
-      chdir={{ edxapp_code_dir }}
-      executable=/bin/bash
+  shell: gem install bundler chdir={{ edxapp_code_dir }}
   environment: "{{ edxapp_environment }}"
   sudo_user: "{{ edxapp_user }}"
   notify:
@@ -100,10 +97,7 @@
   - "restart edxapp_workers"
 
 - name: bundle install
-  shell: >
-    bundle install --binstubs
-      chdir={{ edxapp_code_dir }}
-      executable=/bin/bash
+  shell: bundle install --binstubs chdir={{ edxapp_code_dir }}
   sudo_user: "{{ edxapp_user }}"
   environment: "{{ edxapp_environment }}"
   notify:
